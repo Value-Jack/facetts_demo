@@ -28,6 +28,7 @@
 
 	<title>Weaving Priors Prosody into Speech: Multi-Modal Retrieval-Augmented Generation for Face-Driven
 		Text-To-Speech</title>
+
 	<link rel="icon" type="image/x-icon" href="static/images/favicon.io">
 	<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -55,48 +56,28 @@
 			<h2> Multi-Modal Retrieval-Augmented Generation Framework for Face-Driven
 				Text-To-Speech</h2>
 
-			<!--
-			<div class="is-size-5 publication-authors">
-				<span class="author-block">
-					<a href="https://sites.google.com/view/minyoung2" target="_blank">Minyoung Lee</a>,
-				</span>
-				<span class="author-block">
-					<a href="https://sites.google.com/view/eunil" target="_blank">Eunil Park</a><sup>*</sup>,
-				</span>
-				<span class="author-block">
-					<a href="https://www.csehong.com/" target="_blank">Sungeun Hong</a>
-				</span>
-			</div>
 
-			<div class="is-size-5 publication-authors">
-				<span class="author-block">Sungkyunkwan University<br>Interspeech 2024</span>
-				<span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author</small></span>
-			</div>
 
-			<div class="publication-links">
-				-->
-			<!-- Arxiv PDF link -->
+			<!-- 摘要部分 -->
+			<section id="abstract" class="mt-4">
+				<h3>Abstract</h3>
+				<p style="max-width:110ch;margin:0 auto;text-align:justify;">
+					Given text and a face image, Face-driven Text-To-Speech (Face-TTS) generates speech whose content
+					follows the text and whose timbre/prosody is guided by the face. However, existing methods often
+					produce monotonous prosody due to the ambiguous mapping between visual and speech features. We
+					propose a novel multi-modal Retrieval-Augmented Generation (RAG) framework, named PRFTTS, that
+					reframes prosody generation from an ill-posed prediction task into a well-posed,
+					retrieval-generative task. The core of our method lies in timbre-prosody disentanglement: we first
+					derive a pure speaker timbre representation by mapping faces to their corresponding
+					prosody-invariant speaker features. Subsequently, a multi-modal face-and-text query retrieves the
+					best-matching prosody prior from a large-scale database, which is intelligently fused into the model
+					via a progressively trained gating mechanism. Experimental results show that our method
+					significantly outperforms existing baselines in both prosody controllability and naturalness,
+					providing an effective solution for Face-driven TTS.
+				</p>
+			</section>
 
-			<!--
-				<span class="link-block">
-					<a href="https://www.isca-archive.org/interspeech_2024/lee24_interspeech.pdf" target="_blank"
-						class="external-link button is-normal is-rounded is-dark">
-						<span class="icon">
-							<i class="fas fa-file-pdf"></i>
-						</span>
-						<span>Paper</span>
-					</a>
-				</span>
-			-->
-			<!-- Github link -->
-			<!--
-				<span class="link-block">
-					<a href="https://github.com/myleeee/FVTTS_code" target="_blank"
-						class="external-link button is-normal is-rounded is-dark">
-						<span class="icon">
-							<i class="fab fa-github"></i>
-						</span>
-						<span>Code</span>-->
+
 			</a>
 			</span>
 		</div>
@@ -114,9 +95,11 @@
 	<section class="hero is-small">
 		<div class="hero-body">
 			<div class="container">
-				<h2 class="title is-3">1. Results on LRS3 dataset</h2>
-				<p> We randomly selected unseen faces from the LRS3 dataset for face-driven TTS, using HCFTTS and other
-					methods to generate speech. Below are samples illustrating the resulting synthetic outputs. </p>
+				<h3 class="title is-3">1. Results on LRS3 dataset</h3>
+
+
+				<p> We randomly selected unseen faces from the test LRS3 dataset for face-driven TTS, using PRFTTS and
+					facetts to generate speech. Below are samples illustrating the resulting synthetic outputs. </p>
 				<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
 					<!-- <h2 id="sr-samples" style="text-align: center;">Synthetic voice is synthesized with unseen face
 						images</h2> -->
@@ -128,7 +111,7 @@
 								<th style="text-align: center">Ground Truth</th>
 								<!-- <th style="text-align: center">yourTTS</th> -->
 								<th style="text-align: center">FaceTTS</th>
-								<th style="text-align: center">HCFTTS </th>
+								<th style="text-align: center">PRFTTS(Ours) </th>
 							</tr>
 						</thead>
 
@@ -156,139 +139,165 @@
 
 							<tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/lrs3_dir/dir/t7Xr3AsBEK4.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">The cat stretched lazily
-									on the warm wooden floor, basking in the afternoon sunlight streaming through the
-									large living room window.</td>
+										src="data/face_rag/mos_test_face/0QVXdEOiCw8.jpg"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px"> i wasnt very good at
+									reading things.</td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/gt_dir_wav/t7Xr3AsBEK4.wav" autoplay="">Your
+										<source src="data/face_rag/mos_test/0QVXdEOiCw8_gt.wav" autoplay="">Your
 										browser does
 										not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/facetts/t7Xr3AsBEK4_sys.wav" autoplay="">Your
+										<source src="data/face_rag/mos_test/0QVXdEOiCw8_facetts.wav" autoplay="">Your
 										browser
 										does not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/hcftts/t7Xr3AsBEK4_2025-01-10_20-56sys.wav"
+										<source src="data/face_rag/mos_test/0QVXdEOiCw8_smooth_gate2w_lib.wav"
 											autoplay="">Your browser
 										does not support the audio element.
 									</audio></td>
 							</tr>
 
 
-
 							<tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/lrs3_dir/dir/Jc9RdbHEFa0.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">A storm was brewing on
-									the horizon, the dark clouds rolling in as the first drops of rain kissed the dry
-									earth.</td>
+										src="data/face_rag/mos_test_face/3OgsRa7VDtI.jpg"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px"> they cant get what they
+									need when they need it.</td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/gt_dir_wav/Jc9RdbHEFa0.wav" autoplay="">Your
+										<source src="data/face_rag/mos_test/3OgsRa7VDtI_gt.wav" autoplay="">Your
 										browser does
 										not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/facetts/Jc9RdbHEFa0_sys.wav" autoplay="">Your
+										<source src="data/face_rag/mos_test/3OgsRa7VDtI_facetts.wav" autoplay="">Your
 										browser
 										does not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/hcftts/Jc9RdbHEFa0_2025-01-10_20-56sys.wav"
-											autoplay="">Your browser
+										<source src="data/face_rag/mos_test/3OgsRa7VDtI_smooth_gate2w_lib.wav"
+											autoplay="">
+										Your browser
 										does not support the audio element.
 									</audio></td>
 							</tr>
 
 							<tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/lrs3_dir/dir/3A1LvXRnpVg.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">The sun sets over the
-									horizon, casting a golden glow across the sky while waves gently crash onto the
-									sandy shore.</td>
+										src="data/face_rag/mos_test_face/AWPrOvzzqZk.jpg"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px"> and when you think
+									about it it makes a lot of sense because forming a question is a really complex</td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/gt_dir_wav/3A1LvXRnpVg.wav" autoplay="">Your
+										<source src="data/face_rag/mos_test/AWPrOvzzqZk_gt.wav" autoplay="">Your
 										browser does
 										not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/facetts/3A1LvXRnpVg_sys.wav" autoplay="">Your
+										<source src="data/face_rag/mos_test/AWPrOvzzqZk_facetts.wav" autoplay="">Your
 										browser
 										does not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/hcftts/3A1LvXRnpVg_2025-01-10_20-56sys.wav"
-											autoplay="">Your browser
+										<source src="data/face_rag/mos_test/AWPrOvzzqZk_smooth_gate2w_lib.wav"
+											autoplay="">
+										Your browser
 										does not support the audio element.
 									</audio></td>
 							</tr>
 
+
 							<tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/lrs3_dir/dir/8Z24LCysq3A.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">A gentle breeze rustled
-									the leaves outside the window, carrying the sweet scent of blooming flowers through
-									the warm summer air.
+										src="data/face_rag/mos_test_face/1PNX6MSdVsk.jpg"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px"> i dont have an
+									overview.</td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/mos_test/1PNX6MSdVsk_gt.wav" autoplay="">Your
+										browser does
+										not support the audio element.
+									</audio></td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/mos_test/1PNX6MSdVsk_facetts.wav" autoplay="">Your
+										browser
+										does not support the audio element.
+									</audio></td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/mos_test/1PNX6MSdVsk_smooth_gate2w_lib.wav"
+											autoplay="">
+										Your browser
+										does not support the audio element.
+									</audio></td>
+							</tr>
 
+
+							<tr>
+								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
+										src="data/face_rag/mos_test_face/3vfuCPFb8wk.jpg"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px"> but its more
+									complicated.</td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/mos_test/3vfuCPFb8wk_gt.wav" autoplay="">Your
+										browser does
+										not support the audio element.
+									</audio></td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/mos_test/3vfuCPFb8wk_facetts.wav" autoplay="">Your
+										browser
+										does not support the audio element.
+									</audio></td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/mos_test/3vfuCPFb8wk_smooth_gate2w_lib.wav"
+											autoplay="">
+										Your browser
+										does not support the audio element.
+									</audio></td>
+							</tr>
+
+
+							<tr>
+								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
+										src="data/face_rag/mos_test_face/BzeTjn0R2VY.jpg"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px"> i mean everyone did.
 								</td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/gt_dir_wav/8Z24LCysq3A.wav" autoplay="">Your
+										<source src="data/face_rag/mos_test/BzeTjn0R2VY_gt.wav" autoplay="">Your
 										browser does
 										not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/facetts/8Z24LCysq3A_sys.wav" autoplay="">Your
+										<source src="data/face_rag/mos_test/BzeTjn0R2VY_facetts.wav" autoplay="">Your
 										browser
 										does not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/hcftts/8Z24LCysq3A_2025-01-10_20-56sys.wav"
-											autoplay="">Your browser
+										<source src="data/face_rag/mos_test/BzeTjn0R2VY_smooth_gate2w_lib.wav"
+											autoplay="">
+										Your browser
 										does not support the audio element.
 									</audio></td>
 							</tr>
 
-							<tr>
-								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/lrs3_dir/dir/OIlSXRCSBSI.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">She adjusted her glasses
-									and took a deep breath before stepping onto the stage, ready to deliver her speech
-									to the audience.</td>
-								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
-										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/gt_dir_wav/OIlSXRCSBSI.wav" autoplay="">Your
-										browser does
-										not support the audio element.
-									</audio></td>
-								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
-										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/facetts/OIlSXRCSBSI_sys.wav" autoplay="">Your
-										browser
-										does not support the audio element.
-									</audio></td>
-								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
-										style="width: 180px;">
-										<source src="data/lrs3/lrs3_dir/hcftts/OIlSXRCSBSI_2025-01-10_20-56sys.wav"
-											autoplay="">Your browser
-										does not support the audio element.
-									</audio></td>
-							</tr>
 
-							<tr>
+							<!-- <tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
 										src="data/animation/mos_real_face/lrs3_realface/PhVP1tNeGyY.jpg"></td>
 								<td style="text-align: left;vertical-align:middle;width: 350px">how cool is that.</td>
@@ -310,8 +319,8 @@
 											autoplay="">Your browser
 										does not support the audio element.
 									</audio></td>
-							</tr>
-
+							</tr> -->
+							<!-- 到这里为止 -->
 							<!-- <tr>
 							</tr> -->
 
@@ -437,162 +446,146 @@
 	<section class="hero is-small">
 		<div class="hero-body">
 			<div class="container">
-				<h2 class="title is-3">2. Results on Multi-Domain LRS3 dataset</h2>
+				<h3 class="title is-3">2. Results on the Out-of-Domain Dataset</h3>
 				<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
 					<!-- <h2 id="sr-samples" style="text-align: center;">GRID dataset</h2> -->
-					<p>For the out of domain LRS3 datasets, we used the HCFTTS and other method to generate the
+					<p>For the out of domain LRS3 datasets, we used the PRFTTS and other method to generate the
 						corresponding speech.</p>
 					<table class="table table-hover pt-2">
 						<thead>
 							<tr>
 								<th style="text-align: center">Face</th>
 								<th style="text-align: center">Text</th>
-								<th style="text-align: center">Ground Truth</th>
-								<th style="text-align: center">faceTTS</th>
-								<th style="text-align: center">HCFTTS </th>
+								<th style="text-align: center">FaceTTS</th>
+								<th style="text-align: center">Face-StyleSpeech</th>
+								<th style="text-align: center">PRFTTS(Ours) </th>
 							</tr>
 						</thead>
 
 						<tbody>
 							<tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/multi_domain/face_arance/0gks6ceq4eQ.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">The sun sets over the
-									horizon, casting a golden glow across the sky while waves gently crash onto the
-									sandy shore.</td>
+										src="data/face_rag/facestyle_face/mos2.jpg"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px">It's great, because it
+									takes a lot of pressure off the players.</td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/multi_domain/gt_wav/0gks6ceq4eQ.wav" autoplay="">Your
+										<source src="data/face_rag/facestyle/mos2-facetts.wav" autoplay="">Your
 										browser does not
 										support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/0gks6ceq4eQ_sys.wav"
-											autoplay="">Your browser
+										<source src="data/face_rag/facestyle/mos2-face-stylespeech.wav" autoplay="">Your
+										browser
 										does not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/0gks6ceq4eQ_2025-01-10_20-56sys.wav"
-											autoplay="">Your browser
+										<source src="data/face_rag/prftts/mos2.wav" autoplay="">Your browser
 										does not support the audio element.
 									</audio></td>
 							</tr>
+
 							<tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/multi_domain/face_arance/k2hQL9Zrokk.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">The river flowed quietly
-									through the valley, reflecting the moonlight as small ripples disturbed the
-									otherwise still surface of the water.
+										src="data/face_rag/facestyle_face/mos3.jpg"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px">They made clear that
+									they are not interested in Government assistance.</td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/facestyle/mos3-facetts.wav" autoplay="">Your
+										browser does not
+										support the audio element.
+									</audio></td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/facestyle/mos3-face-stylespeech.wav" autoplay="">Your
+										browser
+										does not support the audio element.
+									</audio></td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/prftts/mos3.wav" autoplay="">Your browser
+										does not support the audio element.
+									</audio></td>
+							</tr>
+
+							<tr>
+								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
+										src="data/face_rag/facestyle_face/mos4.jpg"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px">We must provide a
+									long-term solution to tackle this attitude.</td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/facestyle/mos4-facetts.wav" autoplay="">Your
+										browser does not
+										support the audio element.
+									</audio></td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/facestyle/mos4-face-stylespeech.wav" autoplay="">Your
+										browser
+										does not support the audio element.
+									</audio></td>
+								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
+										style="width: 180px;">
+										<source src="data/face_rag/prftts/mos4.wav" autoplay="">Your browser
+										does not support the audio element.
+									</audio></td>
+							</tr>
+
+							<tr>
+								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
+										src="data/face_rag/facestyle_face/mos10.png"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px">The actual primary
+									rainbow observed is said to be the effect of super-imposition of a number of bows.
 								</td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/multi_domain/gt_wav/k2hQL9Zrokk.wav" autoplay="">Your
+										<source src="data/face_rag/facestyle/mos10-facetts.wav" autoplay="">Your
 										browser does not
 										support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/k2hQL9Zrokk_sys.wav"
-											autoplay="">Your browser
+										<source src="data/face_rag/facestyle/mos10-face-stylespeech.wav" autoplay="">
+										Your
+										browser
 										does not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/k2hQL9Zrokk_2025-01-10_20-56sys.wav"
-											autoplay="">Your browser
+										<source src="data/face_rag/prftts/mos10.wav" autoplay="">Your browser
 										does not support the audio element.
 									</audio></td>
 							</tr>
+
 							<tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/multi_domain/face_arance/KPNn880KWfU.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">The musician strummed
-									his guitar under the streetlight, his soulful voice carrying through the alley,
-									drawing a small crowd of listeners.
-								</td>
+										src="data/face_rag/facestyle_face/mos11.png"></td>
+								<td style="text-align: left;vertical-align:middle;width: 350px">We have always
+									maintained that we would never abandon Scottish football.</td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source src="data/lrs3/multi_domain/gt_wav/KPNn880KWfU.wav" autoplay="">Your
+										<source src="data/face_rag/facestyle/mos11-facetts.wav" autoplay="">Your
 										browser does not
 										support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/KPNn880KWfU_sys.wav"
-											autoplay="">Your browser
+										<source src="data/face_rag/facestyle/mos11-face-stylespeech.wav" autoplay="">
+										Your
+										browser
 										does not support the audio element.
 									</audio></td>
 								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
 										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/KPNn880KWfU_2025-01-10_20-56sys.wav"
-											autoplay="">Your browser
-										does not support the audio element.
-									</audio></td>
-							</tr>
-							<tr>
-								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/multi_domain/face_arance/B8rmi95pYL0.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">The cat stretched lazily
-									on the warm wooden floor, basking in the afternoon sunlight streaming through the
-									large living room window.
-								</td>
-								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
-										style="width: 180px;">
-										<source src="data/lrs3/multi_domain/gt_wav/B8rmi95pYL0.wav" autoplay="">Your
-										browser does not
-										support the audio element.
-									</audio></td>
-								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
-										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/B8rmi95pYL0_sys.wav"
-											autoplay="">Your browser
-										does not support the audio element.
-									</audio></td>
-								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
-										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/B8rmi95pYL0_2025-01-10_20-56sys.wav"
-											autoplay="">Your browser
+										<source src="data/face_rag/prftts/mos11.wav" autoplay="">Your browser
 										does not support the audio element.
 									</audio></td>
 							</tr>
-							<tr>
-								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
-										src="data/lrs3/multi_domain/face_arance/DCIL2nvU4x8.jpg"></td>
-								<td style="text-align: left;vertical-align:middle;width: 350px">The coffee shop was
-									filled with the rich aroma of freshly brewed coffee, mingling with the soft hum of
-									quiet conversations.
-								</td>
-								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
-										style="width: 180px;">
-										<source src="data/lrs3/multi_domain/gt_wav/DCIL2nvU4x8.wav" autoplay="">Your
-										browser does not
-										support the audio element.
-									</audio></td>
-								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
-										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/DCIL2nvU4x8_sys.wav"
-											autoplay="">Your browser
-										does not support the audio element.
-									</audio></td>
-								<td style="text-align: center;vertical-align:middle"><audio controls="controls"
-										style="width: 180px;">
-										<source
-											src="data/lrs3/multi_domain/face_arance_output_wav_txt/DCIL2nvU4x8_2025-01-10_20-56sys.wav"
-											autoplay="">Your browser
-										does not support the audio element.
-									</audio></td>
-							</tr>
+
 
 							<!-- <tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
@@ -626,10 +619,12 @@
 					</table>
 				</div>
 
-				<h2 class="title is-3">3. Results on Animation dataset</h2>
+
+				<!-- <h2 class="title is-3">3. Results on Animation dataset</h2> -->
+				<!--
 				<div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
-					<!-- <h2 id="sr-samples" style="text-align: center;">Animation dataset</h2> -->
-					<p>To further test the generalization capability of HCFTTS, we select an out-of-distribution
+
+					<p>To further test the generalization capability of PRFTTS, we select an out-of-distribution
 						scenario using animation face data to synthesize speech.</p>
 					<table class="table table-hover pt-2">
 						<thead>
@@ -638,7 +633,7 @@
 								<th style="text-align: center">Text</th>
 								<th style="text-align: center">Ground Truth</th>
 								<th style="text-align: center">faceTTS</th>
-								<th style="text-align: center">HCFTTS </th>
+								<th style="text-align: center">PRFTTS </th>
 							</tr>
 						</thead>
 
@@ -803,7 +798,7 @@
 
 
 
-							<!-- <tr>
+							 <tr>
 								<td style="text-align: left;vertical-align:middle;width: 150px"><img class="cropped"
 										src="static/images/ani/sul.jpg"></td>
 								<td style="text-align: left;vertical-align:middle;width: 350px">You should see these
@@ -895,12 +890,12 @@
 							</tr> -->
 
 
-						</tbody>
-					</table>
-				</div>
-
-
+				</tbody>
+				</table>
 			</div>
+
+
+		</div>
 		</div>
 	</section>
 
