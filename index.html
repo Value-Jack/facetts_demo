@@ -53,7 +53,7 @@
 	<div class="class=" container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
 		<div class="text-center">
 			<h1> Weaving Prosody Priors into Speech :</h1>
-			<h2> Multi-Modal Retrieval-Augmented Generation Framework for Face-Driven
+			<h2> A MultiModal Retrieval-Augmented Generation Framework for Face-Driven
 				Text-To-Speech</h2>
 
 
@@ -62,18 +62,21 @@
 			<section id="abstract" class="mt-4">
 				<h3>Abstract</h3>
 				<p style="max-width:110ch;margin:0 auto;text-align:justify;">
-					Given text and a face image, Face-driven Text-To-Speech (Face-TTS) generates speech whose content
-					follows the text and whose timbre/prosody is guided by the face. However, existing methods often
-					produce monotonous prosody due to the ambiguous mapping between visual and speech features. We
-					propose a novel multi-modal Retrieval-Augmented Generation (RAG) framework, named PRFTTS, that
-					reframes prosody generation from an ill-posed prediction task into a well-posed,
-					retrieval-generative task. The core of our method lies in timbre-prosody disentanglement: we first
-					derive a pure speaker timbre representation by mapping faces to their corresponding
-					prosody-invariant speaker features. Subsequently, a multi-modal face-and-text query retrieves the
-					best-matching prosody prior from a large-scale database, which is intelligently fused into the model
-					via a progressively trained gating mechanism. Experimental results show that our method
-					significantly outperforms existing baselines in both prosody controllability and naturalness,
-					providing an effective solution for Face-driven TTS.
+					Given a text and a face image, face-driven text-to-speech (TTS) aims to synthesize speech whose
+					linguistic content follows the text and whose speaker characteristics are compatible with the face.
+					However, existing methods often produce monotonous speech because utterance-level rhythm and
+					intonation cannot be uniquely inferred from a static image. We propose PRFTTS (Prosody
+					Retrieval for Face-driven Text-to-Speech), a multimodal retrieval-augmented framework for expressive
+					face-driven speech synthesis. Instead of directly predicting prosody from
+					the face, PRFTTS separates speaker identity from utterance-level prosody. Speaker Prototype
+					Alignment maps the face representation into a stable speaker embedding space and provides identity
+					conditioning to the acoustic decoder. In parallel, a face-and-text retrieval module retrieves
+					natural pitch and energy trajectories from an external database. A progressive
+					fusion strategy then introduces the retrieved prosody into the speech-token language model, enabling
+					diverse prosodic patterns while preserving speaker consistency. Experiments on LRS3 demonstrate
+					competitive improvements in speaker consistency, face--voice compatibility, speech naturalness, and
+					prosodic
+					expressiveness over existing face-driven TTS systems.
 				</p>
 			</section>
 
